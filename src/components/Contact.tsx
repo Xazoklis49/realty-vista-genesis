@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   MapPin, 
   Phone, 
@@ -48,6 +49,7 @@ export const Contact = () => {
     message: ""
   });
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -71,11 +73,10 @@ export const Contact = () => {
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Get In Touch
+            {t('contactTitle')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to find your dream property or need expert real estate advice? 
-            Our team is here to help you every step of the way.
+            {t('contactSubtitle')}
           </p>
         </div>
 
@@ -99,7 +100,7 @@ export const Contact = () => {
                   className="group bg-gradient-card border-0 shadow-card hover:shadow-elegant transition-all duration-300 hover:scale-[1.02]"
                 >
                   <CardContent className="p-6">
-                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-primary rounded-lg mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-lg mb-4 group-hover:scale-110 transition-transform duration-300">
                       <info.icon className="h-6 w-6 text-primary-foreground" />
                     </div>
                     <h4 className="font-semibold text-foreground mb-2">{info.title}</h4>
@@ -130,7 +131,7 @@ export const Contact = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                        Full Name
+                        {t('name')}
                       </label>
                       <Input
                         id="name"
@@ -160,7 +161,7 @@ export const Contact = () => {
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                      Email Address
+                      {t('email')}
                     </label>
                     <Input
                       id="email"
@@ -176,7 +177,7 @@ export const Contact = () => {
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Message
+                      {t('message')}
                     </label>
                     <Textarea
                       id="message"
@@ -190,9 +191,9 @@ export const Contact = () => {
                     />
                   </div>
 
-                  <Button type="submit" variant="hero" size="lg" className="w-full">
+                  <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                     <Send className="h-5 w-5 mr-2" />
-                    Send Message
+                    {t('send')}
                   </Button>
                 </form>
               </CardContent>
