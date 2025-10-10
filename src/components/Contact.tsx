@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   MapPin, 
   Phone, 
@@ -41,6 +42,7 @@ const contactInfo = [
 ];
 
 export const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -71,11 +73,10 @@ export const Contact = () => {
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Get In Touch
+            {t('contactTitle')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to find your dream property or need expert real estate advice? 
-            Our team is here to help you every step of the way.
+            {t('contactSubtitle')}
           </p>
         </div>
 
@@ -130,7 +131,7 @@ export const Contact = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                        Full Name
+                        {t('name')}
                       </label>
                       <Input
                         id="name"
@@ -160,7 +161,7 @@ export const Contact = () => {
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                      Email Address
+                      {t('email')}
                     </label>
                     <Input
                       id="email"
@@ -176,7 +177,7 @@ export const Contact = () => {
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Message
+                      {t('message')}
                     </label>
                     <Textarea
                       id="message"
@@ -192,7 +193,7 @@ export const Contact = () => {
 
                   <Button type="submit" variant="hero" size="lg" className="w-full">
                     <Send className="h-5 w-5 mr-2" />
-                    Send Message
+                    {t('sendMessage')}
                   </Button>
                 </form>
               </CardContent>

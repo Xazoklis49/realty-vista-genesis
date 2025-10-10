@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MapPin, Bed, Bath, Square, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
@@ -46,17 +47,18 @@ const properties = [
 ];
 
 export const FeaturedProperties = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="properties" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Featured Properties
+            {t('featuredTitle')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Discover our handpicked selection of premium properties, each offering 
-            unique luxury and exceptional value in prime locations.
+            {t('featuredSubtitle')}
           </p>
         </div>
 
@@ -111,7 +113,7 @@ export const FeaturedProperties = () => {
                 </div>
 
                 <Button className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  View Details
+                  {t('viewDetails')}
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
               </CardContent>

@@ -1,0 +1,94 @@
+import React, { createContext, useContext, useState, ReactNode } from 'react';
+
+type Language = 'en' | 'gr';
+
+interface LanguageContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: string) => string;
+}
+
+const translations = {
+  en: {
+    buyProperty: 'Buy Property',
+    sellProperty: 'Sell Property',
+    rentProperty: 'Rent Property',
+    submitProperty: 'Submit Your Property',
+    callNow: 'Call Now',
+    getStarted: 'Get Started',
+    heroTitle: 'Find Your Dream Property',
+    heroSubtitle: 'Discover exceptional properties with EliteHomes - where luxury meets innovation',
+    exploreProperties: 'Explore Properties',
+    featuredTitle: 'Featured Properties',
+    featuredSubtitle: 'Discover our handpicked selection of premium properties',
+    viewDetails: 'View Details',
+    contactTitle: 'Get in Touch',
+    contactSubtitle: 'Ready to find your dream property? Contact us today',
+    name: 'Name',
+    email: 'Email',
+    message: 'Message',
+    sendMessage: 'Send Message',
+    howItWorksTitle: 'How It Works',
+    step1Title: 'Schedule a Visit',
+    step1Content: 'Browse our properties and schedule a viewing at your convenience',
+    step2Title: 'Property Consultation',
+    step2Content: 'Meet with our experts to discuss your needs and preferences',
+    step3Title: 'Secure Financing',
+    step3Content: 'We help you find the best financing options for your property',
+    step4Title: 'Complete Purchase',
+    step4Content: 'Finalize the deal with our seamless closing process',
+  },
+  gr: {
+    buyProperty: 'Αγορά Ακινήτου',
+    sellProperty: 'Πώληση Ακινήτου',
+    rentProperty: 'Ενοικίαση Ακινήτου',
+    submitProperty: 'Καταχώρηση Ακινήτου',
+    callNow: 'Καλέστε Τώρα',
+    getStarted: 'Ξεκινήστε',
+    heroTitle: 'Βρείτε το Ιδανικό σας Ακίνητο',
+    heroSubtitle: 'Ανακαλύψτε εξαιρετικά ακίνητα με την EliteHomes - όπου η πολυτέλεια συναντά την καινοτομία',
+    exploreProperties: 'Εξερευνήστε Ακίνητα',
+    featuredTitle: 'Επιλεγμένα Ακίνητα',
+    featuredSubtitle: 'Ανακαλύψτε τα προσεκτικά επιλεγμένα premium ακίνητά μας',
+    viewDetails: 'Λεπτομέρειες',
+    contactTitle: 'Επικοινωνήστε',
+    contactSubtitle: 'Έτοιμοι να βρείτε το ιδανικό σας ακίνητο; Επικοινωνήστε μαζί μας σήμερα',
+    name: 'Όνομα',
+    email: 'Email',
+    message: 'Μήνυμα',
+    sendMessage: 'Αποστολή Μηνύματος',
+    howItWorksTitle: 'Πώς Λειτουργεί',
+    step1Title: 'Προγραμματίστε Επίσκεψη',
+    step1Content: 'Περιηγηθείτε στα ακίνητά μας και προγραμματίστε μια προβολή όποτε σας βολεύει',
+    step2Title: 'Συμβουλευτική Ακινήτου',
+    step2Content: 'Συναντηθείτε με τους ειδικούς μας για να συζητήσετε τις ανάγκες και τις προτιμήσεις σας',
+    step3Title: 'Εξασφάλιση Χρηματοδότησης',
+    step3Content: 'Σας βοηθάμε να βρείτε τις καλύτερες επιλογές χρηματοδότησης για το ακίνητό σας',
+    step4Title: 'Ολοκλήρωση Αγοράς',
+    step4Content: 'Ολοκληρώστε τη συμφωνία με την απρόσκοπτη διαδικασία κλεισίματός μας',
+  },
+};
+
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
+export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+  const [language, setLanguage] = useState<Language>('en');
+
+  const t = (key: string): string => {
+    return translations[language][key as keyof typeof translations.en] || key;
+  };
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};
+
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+};

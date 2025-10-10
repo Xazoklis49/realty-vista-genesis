@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, MapPin, TrendingUp } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import heroProperty from "@/assets/hero-property.jpg";
 
 export const Hero = () => {
+  const { t } = useLanguage();
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
@@ -55,7 +57,7 @@ export const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <Button size="lg" variant="luxury" className="text-lg px-8 py-6">
-              Explore Properties
+              {t('exploreProperties')}
               <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-white/30 text-white hover:bg-white/10">

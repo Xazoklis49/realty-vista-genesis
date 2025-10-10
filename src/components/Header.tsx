@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, Phone } from "lucide-react";
+import { Menu, X, Home, Phone, Moon, Sun, Upload } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "next-themes";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("buy");
+  const { language, setLanguage, t } = useLanguage();
+  const { theme, setTheme } = useTheme();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -17,30 +23,48 @@ export const Header = () => {
             <span className="text-xl font-bold text-foreground">EliteHomes</span>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#properties" className="text-foreground hover:text-primary transition-colors">
-              Properties
-            </a>
-            <a href="#services" className="text-foreground hover:text-primary transition-colors">
-              Services
-            </a>
-            <a href="#about" className="text-foreground hover:text-primary transition-colors">
-              About
-            </a>
-            <a href="#contact" className="text-foreground hover:text-primary transition-colors">
-              Contact
-            </a>
-          </nav>
+          {/* Desktop Navigation - Property Tabs */}
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="hidden md:block">
+            <TabsList className="bg-background/50 border border-border">
+              <TabsTrigger value="buy" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                {t('buyProperty')}
+              </TabsTrigger>
+              <TabsTrigger value="sell" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                {t('sellProperty')}
+              </TabsTrigger>
+              <TabsTrigger value="rent" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                {t('rentProperty')}
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center space-x-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setLanguage(language === 'en' ? 'gr' : 'en')}
+              className="font-medium"
+            >
+              {language === 'en' ? 'ΕΛ' : 'EN'}
+            </Button>
+            
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </Button>
+
             <Button variant="outline" size="sm">
               <Phone className="h-4 w-4 mr-2" />
-              Call Now
+              {t('callNow')}
             </Button>
+            
             <Button variant="luxury" size="sm">
-              Get Started
+              <Upload className="h-4 w-4 mr-2" />
+              {t('submitProperty')}
             </Button>
           </div>
 
@@ -57,41 +81,41 @@ export const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border animate-fade-up">
             <nav className="flex flex-col space-y-4">
-              <a
-                href="#properties"
-                onClick={toggleMenu}
-                className="text-foreground hover:text-primary transition-colors py-2"
-              >
-                Properties
-              </a>
-              <a
-                href="#services"
-                onClick={toggleMenu}
-                className="text-foreground hover:text-primary transition-colors py-2"
-              >
-                Services
-              </a>
-              <a
-                href="#about"
-                onClick={toggleMenu}
-                className="text-foreground hover:text-primary transition-colors py-2"
-              >
-                About
-              </a>
-              <a
-                href="#contact"
-                onClick={toggleMenu}
-                className="text-foreground hover:text-primary transition-colors py-2"
-              >
-                Contact
-              </a>
-              <div className="flex flex-col space-y-2 pt-4">
+              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                <TabsList className="w-full grid grid-cols-3">
+                  <TabsTrigger value="buy">{t('buyProperty')}</TabsTrigger>
+                  <TabsTrigger value="sell">{t('sellProperty')}</TabsTrigger>
+                  <TabsTrigger value="rent">{t('rentProperty')}</TabsTrigger>
+                </TabsList>
+              </Tabs>
+
+              <div className="flex items-center justify-between pt-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setLanguage(language === 'en' ? 'gr' : 'en')}
+                  className="font-medium"
+                >
+                  {language === 'en' ? 'ΕΛ' : 'EN'}
+                </Button>
+                
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                >
+                  {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                </Button>
+              </div>
+
+              <div className="flex flex-col space-y-2 pt-2">
                 <Button variant="outline" size="sm">
                   <Phone className="h-4 w-4 mr-2" />
-                  Call Now
+                  {t('callNow')}
                 </Button>
                 <Button variant="luxury" size="sm">
-                  Get Started
+                  <Upload className="h-4 w-4 mr-2" />
+                  {t('submitProperty')}
                 </Button>
               </div>
             </nav>
