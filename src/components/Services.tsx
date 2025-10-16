@@ -42,9 +42,9 @@ const services = [
   },
   {
     icon: Shield,
-    title: "Legal & Financial Support",
-    description: "Complete legal and financial assistance including mortgage pre-approval and contract review.",
-    features: ["Legal review", "Mortgage assistance", "Due diligence"]
+    title: "Legal Support",
+    description: "Complete legal assistance including contract review and due diligence support.",
+    features: ["Legal review", "Contract assistance", "Due diligence"]
   }
 ];
 

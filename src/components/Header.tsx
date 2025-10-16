@@ -24,14 +24,11 @@ export const Header = () => {
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <button className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              {t('buyProperty')}
-            </button>
+            <a href="/properties" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              {t('browseProperties')}
+            </a>
             <button className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               {t('sellProperty')}
-            </button>
-            <button className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              {t('rentProperty')}
             </button>
             <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
               {t('allServices')}
@@ -79,14 +76,11 @@ export const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-border animate-fade-in">
             <nav className="flex flex-col space-y-3">
-              <button className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
-                {t('buyProperty')}
-              </button>
+              <a href="/properties" className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
+                {t('browseProperties')}
+              </a>
               <button className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
                 {t('sellProperty')}
-              </button>
-              <button className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
-                {t('rentProperty')}
               </button>
               <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
                 {t('allServices')}
