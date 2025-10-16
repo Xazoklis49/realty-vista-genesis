@@ -30,10 +30,10 @@ export const Header = () => {
             <button className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               {t('sellProperty')}
             </button>
-            <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
+            <a href="/services" className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
               {t('allServices')}
               <ChevronDown className="h-4 w-4" />
-            </button>
+            </a>
             
             <Separator orientation="vertical" className="h-6" />
           </nav>
@@ -82,10 +82,10 @@ export const Header = () => {
               <button className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
                 {t('sellProperty')}
               </button>
-              <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
+              <a href="/services" className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
                 {t('allServices')}
                 <ChevronDown className="h-4 w-4" />
-              </button>
+              </a>
 
               <Separator className="my-2" />
 
