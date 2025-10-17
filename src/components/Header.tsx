@@ -4,6 +4,7 @@ import { Menu, X, Home, Moon, Sun, Upload, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "next-themes";
 import { Separator } from "@/components/ui/separator";
+import { ServicesDropdown } from "@/components/ServicesDropdown";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,10 +31,7 @@ export const Header = () => {
             <button className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               {t('sellProperty')}
             </button>
-            <a href="/services" className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
-              {t('allServices')}
-              <ChevronDown className="h-4 w-4" />
-            </a>
+            <ServicesDropdown />
             
             <Separator orientation="vertical" className="h-6" />
           </nav>
@@ -82,10 +80,9 @@ export const Header = () => {
               <button className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
                 {t('sellProperty')}
               </button>
-              <a href="/services" className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
-                {t('allServices')}
-                <ChevronDown className="h-4 w-4" />
-              </a>
+              <div className="py-2">
+                <ServicesDropdown />
+              </div>
 
               <Separator className="my-2" />
 
