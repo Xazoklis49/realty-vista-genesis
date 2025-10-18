@@ -32,6 +32,9 @@ export const Header = () => {
               {t('sellProperty')}
             </button>
             <ServicesDropdown />
+            <a href="/our-team" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              {t('ourTeamNav')}
+            </a>
             
             <Separator orientation="vertical" className="h-6" />
           </nav>
@@ -83,6 +86,9 @@ export const Header = () => {
               <div className="py-2">
                 <ServicesDropdown />
               </div>
+              <a href="/our-team" className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
+                {t('ourTeamNav')}
+              </a>
 
               <Separator className="my-2" />
 
