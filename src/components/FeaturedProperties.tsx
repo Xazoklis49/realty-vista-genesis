@@ -1,3 +1,5 @@
+import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -48,6 +50,30 @@ const properties = [
 
 export const FeaturedProperties = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const totalProperties = properties.length;
+  const initialCount = 3;
+  const displayedProperties = isExpanded ? properties : properties.slice(0, initialCount);
+  
+  const showViewMore = totalProperties > initialCount && !isExpanded;
+  const showSearchMore = isExpanded || totalProperties <= initialCount;
+
+  const handleViewMore = useCallback(() => {
+    if (isLoading) return;
+    setIsLoading(true);
+    
+    setTimeout(() => {
+      setIsExpanded(true);
+      setIsLoading(false);
+    }, 300);
+  }, [isLoading]);
+
+  const handleSearchMore = useCallback(() => {
+    navigate('/properties');
+  }, [navigate]);
   
   return (
     <section id="properties" className="py-20 bg-background">
@@ -64,7 +90,7 @@ export const FeaturedProperties = () => {
 
         {/* Properties Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {properties.map((property, index) => (
+          {displayedProperties.map((property, index) => (
             <Card 
               key={property.id} 
               className="group overflow-hidden shadow-card hover:shadow-elegant transition-all duration-300 hover:scale-[1.02] animate-scale-in"
@@ -74,6 +100,7 @@ export const FeaturedProperties = () => {
                 <img
                   src={property.image}
                   alt={property.title}
+                  loading="lazy"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <Badge 
@@ -121,12 +148,32 @@ export const FeaturedProperties = () => {
           ))}
         </div>
 
-        {/* View All Button */}
+        {/* Action Buttons */}
         <div className="text-center">
-          <Button variant="luxury" size="lg" className="px-8">
-            View All Properties
-            <ArrowRight className="h-5 w-5 ml-2" />
-          </Button>
+          {showViewMore && (
+            <Button 
+              variant="luxury" 
+              size="lg" 
+              className="px-8"
+              onClick={handleViewMore}
+              disabled={isLoading}
+              aria-expanded={isExpanded}
+            >
+              {isLoading ? "Loading..." : "View More Properties"}
+              <ArrowRight className="h-5 w-5 ml-2" />
+            </Button>
+          )}
+          {showSearchMore && (
+            <Button 
+              variant="luxury" 
+              size="lg" 
+              className="px-8"
+              onClick={handleSearchMore}
+            >
+              Search more
+              <ArrowRight className="h-5 w-5 ml-2" />
+            </Button>
+          )}
         </div>
       </div>
     </section>
