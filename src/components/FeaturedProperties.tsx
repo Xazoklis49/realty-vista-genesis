@@ -51,29 +51,30 @@ const properties = [
 export const FeaturedProperties = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(3);
   const [isLoading, setIsLoading] = useState(false);
 
   const totalProperties = properties.length;
-  const initialCount = 3;
-  const displayedProperties = isExpanded ? properties : properties.slice(0, initialCount);
+  const maxExpandedCount = 6;
+  const displayedProperties = properties.slice(0, visibleCount);
   
-  const showViewMore = totalProperties > initialCount && !isExpanded;
-  const showSearchMore = isExpanded || totalProperties <= initialCount;
-
-  const handleViewMore = useCallback(() => {
-    if (isLoading) return;
-    setIsLoading(true);
-    
-    setTimeout(() => {
-      setIsExpanded(true);
-      setIsLoading(false);
-    }, 300);
-  }, [isLoading]);
+  const canExpand = visibleCount < maxExpandedCount && totalProperties > visibleCount;
 
   const handleSearchMore = useCallback(() => {
-    navigate('/properties');
-  }, [navigate]);
+    if (isLoading) return;
+    
+    if (canExpand) {
+      // First click: expand to 6 properties
+      setIsLoading(true);
+      setTimeout(() => {
+        setVisibleCount(Math.min(maxExpandedCount, totalProperties));
+        setIsLoading(false);
+      }, 300);
+    } else {
+      // Second click or if already at max: navigate to /properties
+      navigate('/properties');
+    }
+  }, [isLoading, canExpand, totalProperties, navigate]);
   
   return (
     <section id="properties" className="py-20 bg-background">
@@ -150,30 +151,17 @@ export const FeaturedProperties = () => {
 
         {/* Action Buttons */}
         <div className="text-center">
-          {showViewMore && (
-            <Button 
-              variant="luxury" 
-              size="lg" 
-              className="px-8"
-              onClick={handleViewMore}
-              disabled={isLoading}
-              aria-expanded={isExpanded}
-            >
-              {isLoading ? "Loading..." : "View More Properties"}
-              <ArrowRight className="h-5 w-5 ml-2" />
-            </Button>
-          )}
-          {showSearchMore && (
-            <Button 
-              variant="luxury" 
-              size="lg" 
-              className="px-8"
-              onClick={handleSearchMore}
-            >
-              Search more
-              <ArrowRight className="h-5 w-5 ml-2" />
-            </Button>
-          )}
+          <Button 
+            variant="luxury" 
+            size="lg" 
+            className="px-8"
+            onClick={handleSearchMore}
+            disabled={isLoading}
+            aria-expanded={visibleCount > 3}
+          >
+            {isLoading ? "Loading..." : "Search more"}
+            <ArrowRight className="h-5 w-5 ml-2" />
+          </Button>
         </div>
       </div>
     </section>
