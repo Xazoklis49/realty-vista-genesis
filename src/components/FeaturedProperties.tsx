@@ -1,5 +1,3 @@
-import { useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -50,31 +48,6 @@ const properties = [
 
 export const FeaturedProperties = () => {
   const { t } = useLanguage();
-  const navigate = useNavigate();
-  const [visibleCount, setVisibleCount] = useState(3);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const totalProperties = properties.length;
-  const maxExpandedCount = 6;
-  const displayedProperties = properties.slice(0, visibleCount);
-  
-  const canExpand = visibleCount < maxExpandedCount && totalProperties > visibleCount;
-
-  const handleSearchMore = useCallback(() => {
-    if (isLoading) return;
-    
-    if (canExpand) {
-      // First click: expand to 6 properties
-      setIsLoading(true);
-      setTimeout(() => {
-        setVisibleCount(Math.min(maxExpandedCount, totalProperties));
-        setIsLoading(false);
-      }, 300);
-    } else {
-      // Second click or if already at max: navigate to /properties
-      navigate('/properties');
-    }
-  }, [isLoading, canExpand, totalProperties, navigate]);
   
   return (
     <section id="properties" className="py-20 bg-background">
@@ -91,7 +64,7 @@ export const FeaturedProperties = () => {
 
         {/* Properties Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {displayedProperties.map((property, index) => (
+          {properties.map((property, index) => (
             <Card 
               key={property.id} 
               className="group overflow-hidden shadow-card hover:shadow-elegant transition-all duration-300 hover:scale-[1.02] animate-scale-in"
@@ -101,7 +74,6 @@ export const FeaturedProperties = () => {
                 <img
                   src={property.image}
                   alt={property.title}
-                  loading="lazy"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <Badge 
@@ -149,17 +121,10 @@ export const FeaturedProperties = () => {
           ))}
         </div>
 
-        {/* Action Buttons */}
+        {/* View All Button */}
         <div className="text-center">
-          <Button 
-            variant="luxury" 
-            size="lg" 
-            className="px-8"
-            onClick={handleSearchMore}
-            disabled={isLoading}
-            aria-expanded={visibleCount > 3}
-          >
-            {isLoading ? "Loading..." : "Search more"}
+          <Button variant="luxury" size="lg" className="px-8">
+            View All Properties
             <ArrowRight className="h-5 w-5 ml-2" />
           </Button>
         </div>
