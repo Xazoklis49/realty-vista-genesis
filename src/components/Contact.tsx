@@ -5,6 +5,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { 
   MapPin, 
   Phone, 
@@ -47,6 +54,7 @@ export const Contact = () => {
     name: "",
     email: "",
     phone: "",
+    topic: "",
     message: ""
   });
   const { toast } = useToast();
@@ -64,7 +72,7 @@ export const Contact = () => {
       title: "Message Sent!",
       description: "Thank you for contacting us. We'll get back to you within 24 hours.",
     });
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", topic: "", message: "" });
   };
 
   return (
@@ -157,6 +165,29 @@ export const Contact = () => {
                         className="bg-background"
                       />
                     </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="topic" className="block text-sm font-medium text-foreground mb-2">
+                      {t('topic')}
+                    </label>
+                    <Select
+                      value={formData.topic}
+                      onValueChange={(value) => setFormData(prev => ({ ...prev, topic: value }))}
+                      required
+                    >
+                      <SelectTrigger className="bg-background">
+                        <SelectValue placeholder={t('selectTopic')} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="buy">{t('topicBuy')}</SelectItem>
+                        <SelectItem value="sell">{t('topicSell')}</SelectItem>
+                        <SelectItem value="rent">{t('topicRent')}</SelectItem>
+                        <SelectItem value="legal">{t('topicLegal')}</SelectItem>
+                        <SelectItem value="technical">{t('topicTechnical')}</SelectItem>
+                        <SelectItem value="other">{t('topicOther')}</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   <div>
