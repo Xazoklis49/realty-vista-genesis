@@ -55,21 +55,23 @@ export const Hero = () => {
             >
               <Button 
                 size="lg" 
-                className="group relative overflow-hidden text-base px-8 py-6 bg-primary hover:bg-primary/90 transition-all duration-300"
+                className="group relative overflow-hidden text-base px-8 py-6 bg-primary hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   {t('heroCtaPrimary')}
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Button>
               
               <Button 
                 size="lg" 
                 variant="outline"
-                className="text-base px-8 py-6 border-2 hover:bg-accent/50 transition-all duration-300"
+                className="group text-base px-8 py-6 border-2 hover:bg-accent/50 hover:border-primary/50 transition-all duration-300"
               >
-                {t('heroCtaSecondary')}
+                <span className="group-hover:text-primary transition-colors duration-300">
+                  {t('heroCtaSecondary')}
+                </span>
               </Button>
             </motion.div>
 
@@ -101,7 +103,7 @@ export const Hero = () => {
               transition={{ delay: 0.8, duration: 0.5 }}
               className="flex flex-wrap gap-4 justify-center lg:justify-start text-sm text-muted-foreground"
             >
-              {['Εκτίμηση', 'Νομικός Έλεγχος', 'Χρηματοδότηση', 'Διαχείριση'].map((service, i) => (
+              {['Εκτίμηση Ακινήτου', 'Νομικός Έλεγχος', 'Τεχνικός Έλεγχος', 'Χρηματοδότηση'].map((service, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-primary" />
                   <span>{service}</span>
@@ -122,7 +124,7 @@ export const Hero = () => {
               <div className="aspect-[4/3] relative">
                 <img 
                   src={heroProperty} 
-                  alt="Uniko Real Estate Platform - Buy and Sell Properties in Greece"
+                  alt="Proper Land - Αγορά και Πώληση Ακινήτου στην Ελλάδα με Ασφάλεια"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
@@ -140,8 +142,8 @@ export const Hero = () => {
                     <TrendingUp className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-foreground">Άμεση Εκτίμηση</div>
-                    <div className="text-xs text-muted-foreground">Σε λιγότερο από 24 ώρες</div>
+                    <div className="text-sm font-semibold text-foreground">Άμεση Εκτίμηση Ακινήτου</div>
+                    <div className="text-xs text-muted-foreground">Μέσα σε 24 ώρες</div>
                   </div>
                 </div>
               </motion.div>
