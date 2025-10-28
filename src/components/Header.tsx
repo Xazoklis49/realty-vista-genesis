@@ -28,9 +28,6 @@ export const Header = () => {
             <a href="/properties" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               {t('browseProperties')}
             </a>
-            <button className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              {t('sellProperty')}
-            </button>
             <ServicesDropdown />
             <a href="/our-team" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               {t('ourTeamNav')}
@@ -80,9 +77,6 @@ export const Header = () => {
               <a href="/properties" className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
                 {t('browseProperties')}
               </a>
-              <button className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
-                {t('sellProperty')}
-              </button>
               <div className="py-2">
                 <ServicesDropdown />
               </div>
