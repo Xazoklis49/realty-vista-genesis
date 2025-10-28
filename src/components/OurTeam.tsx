@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { motion, AnimatePresence } from "framer-motion";
-import { User, Linkedin, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { User, Linkedin } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -18,7 +18,6 @@ interface TeamMember {
 
 export const OurTeam = () => {
   const { t } = useLanguage();
-  const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   const teamMembers: TeamMember[] = [
@@ -72,17 +71,6 @@ export const OurTeam = () => {
     },
   ];
 
-  const filters = [
-    t('teamFilterAll'),
-    t('teamFilterEngineering'),
-    t('teamFilterDesign'),
-    t('teamFilterOps'),
-    t('teamFilterLegal'),
-  ];
-
-  const filteredMembers = selectedFilter === t('teamFilterAll')
-    ? teamMembers
-    : teamMembers.filter(member => member.department === selectedFilter);
 
   const container = {
     hidden: { opacity: 0 },
@@ -146,44 +134,15 @@ export const OurTeam = () => {
           </motion.p>
         </motion.div>
 
-        {/* Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-3 mb-16"
-        >
-          {filters.map((filter) => (
-            <motion.button
-              key={filter}
-              onClick={() => setSelectedFilter(filter)}
-              className={`
-                px-6 py-2.5 rounded-full text-sm font-medium
-                transition-all duration-300 backdrop-blur-sm
-                ${selectedFilter === filter
-                  ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
-                  : 'bg-card/50 border border-border/50 hover:border-primary/50 text-muted-foreground hover:text-foreground'
-                }
-              `}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {filter}
-            </motion.button>
-          ))}
-        </motion.div>
-
         {/* Team Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedFilter}
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr"
-          >
-            {filteredMembers.map((member, index) => (
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr"
+        >
+          {teamMembers.map((member, index) => (
               <motion.div
                 key={`${member.name}-${index}`}
                 variants={item}
@@ -271,20 +230,8 @@ export const OurTeam = () => {
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-b-2xl" />
                 </motion.div>
               </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Empty state */}
-        {filteredMembers.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-20"
-          >
-            <p className="text-muted-foreground text-lg">No team members found in this category.</p>
-          </motion.div>
-        )}
+          ))}
+        </motion.div>
       </div>
 
       {/* Bio Modal */}
