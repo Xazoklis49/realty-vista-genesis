@@ -1,83 +1,155 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, MapPin, TrendingUp } from "lucide-react";
+import { ArrowRight, Shield, CheckCircle2, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { motion } from "framer-motion";
 import heroProperty from "@/assets/hero-property.jpg";
 
 export const Hero = () => {
   const { t } = useLanguage();
+  
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${heroProperty})`,
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-transparent"></div>
-      </div>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
+      
+      {/* Content Container */}
+      <div className="relative container mx-auto px-4 py-20 md:py-32">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column - Text Content */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="space-y-8 text-center lg:text-left"
+          >
+            {/* Trust Badge */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm"
+            >
+              <Shield className="h-4 w-4 text-primary" />
+              <span className="text-sm font-medium text-foreground">{t('heroTrustBadge')}</span>
+            </motion.div>
 
-      {/* Content */}
-      <div className="relative container mx-auto px-4 pt-16">
-        <div className="max-w-3xl text-white animate-fade-up">
-          {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-luxury/20 border border-luxury/30 backdrop-blur-sm mb-6">
-            <TrendingUp className="h-4 w-4 mr-2 text-luxury" />
-            <span className="text-sm font-medium">Premium Real Estate Innovation</span>
-          </div>
-
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-            Discover Your
-            <span className="block text-luxury">Dream Home</span>
-          </h1>
-
-          {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl">
-            Experience the future of real estate with our cutting-edge technology, 
-            personalized service, and exclusive access to premium properties.
-          </p>
-
-          {/* Stats */}
-          <div className="flex flex-wrap gap-8 mb-10">
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-luxury">500+</div>
-              <div className="text-sm text-white/80">Properties Sold</div>
+            {/* Main Headline */}
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-foreground">
+                {t('heroHeadline')}
+              </h1>
+              
+              {/* Subheadline */}
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                {t('heroSubheadline')}
+              </p>
             </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-luxury">98%</div>
-              <div className="text-sm text-white/80">Client Satisfaction</div>
+
+            {/* CTA Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <Button 
+                size="lg" 
+                className="group relative overflow-hidden text-base px-8 py-6 bg-primary hover:bg-primary/90 transition-all duration-300"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  {t('heroCtaPrimary')}
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </Button>
+              
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="text-base px-8 py-6 border-2 hover:bg-accent/50 transition-all duration-300"
+              >
+                {t('heroCtaSecondary')}
+              </Button>
+            </motion.div>
+
+            {/* Stats Row */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="flex flex-wrap gap-8 justify-center lg:justify-start pt-4"
+            >
+              <div className="text-center lg:text-left">
+                <div className="text-3xl md:text-4xl font-bold text-primary">500+</div>
+                <div className="text-sm text-muted-foreground">{t('heroStatsProperties')}</div>
+              </div>
+              <div className="text-center lg:text-left">
+                <div className="text-3xl md:text-4xl font-bold text-primary">98%</div>
+                <div className="text-sm text-muted-foreground">{t('heroStatsSatisfaction')}</div>
+              </div>
+              <div className="text-center lg:text-left">
+                <div className="text-3xl md:text-4xl font-bold text-primary">€2B+</div>
+                <div className="text-sm text-muted-foreground">{t('heroStatsVolume')}</div>
+              </div>
+            </motion.div>
+
+            {/* Service Highlights */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="flex flex-wrap gap-4 justify-center lg:justify-start text-sm text-muted-foreground"
+            >
+              {['Εκτίμηση', 'Νομικός Έλεγχος', 'Χρηματοδότηση', 'Διαχείριση'].map((service, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                  <span>{service}</span>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column - Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="relative"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              {/* Main Image */}
+              <div className="aspect-[4/3] relative">
+                <img 
+                  src={heroProperty} 
+                  alt="Uniko Real Estate Platform - Buy and Sell Properties in Greece"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+              </div>
+              
+              {/* Floating Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="absolute bottom-6 right-6 bg-background/95 backdrop-blur-lg rounded-xl p-4 shadow-lg border border-border"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <TrendingUp className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-foreground">Άμεση Εκτίμηση</div>
+                    <div className="text-xs text-muted-foreground">Σε λιγότερο από 24 ώρες</div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-luxury">$2B+</div>
-              <div className="text-sm text-white/80">Total Sales Volume</div>
-            </div>
-          </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Button size="lg" variant="luxury" className="text-lg px-8 py-6">
-              {t('exploreProperties')}
-              <ArrowRight className="h-5 w-5 ml-2" />
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-white/30 text-white hover:bg-white/10">
-              <Play className="h-5 w-5 mr-2" />
-              Watch Our Story
-            </Button>
-          </div>
-
-          {/* Location Indicator */}
-          <div className="flex items-center text-white/80">
-            <MapPin className="h-4 w-4 mr-2" />
-            <span className="text-sm">Serving Premium Locations Nationwide</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2"></div>
+            {/* Decorative Elements */}
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-primary/10 via-transparent to-accent/10 blur-3xl rounded-full" />
+          </motion.div>
         </div>
       </div>
     </section>
