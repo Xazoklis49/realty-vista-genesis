@@ -1,28 +1,16 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { SlidersHorizontal, Bookmark } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-
 export const PropertyFilters = () => {
-  const { language } = useLanguage();
+  const {
+    language
+  } = useLanguage();
   const [showFilters, setShowFilters] = useState(false);
-
-  return (
-    <div className="space-y-4">
+  return <div className="space-y-4">
       <div className="flex items-center gap-2 flex-wrap">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => setShowFilters(!showFilters)}
-          className="gap-2"
-        >
+        <Button variant="outline" size="sm" onClick={() => setShowFilters(!showFilters)} className="gap-2">
           <SlidersHorizontal className="h-4 w-4" />
           {language === "en" ? "Search filters" : "Φίλτρα αναζήτησης"}
         </Button>
@@ -82,14 +70,10 @@ export const PropertyFilters = () => {
           </SelectContent>
         </Select>
 
-        <Button variant="ghost" size="sm" className="gap-2 ml-auto">
-          <Bookmark className="h-4 w-4" />
-          {language === "en" ? "Save this search" : "Αποθήκευση αναζήτησης"}
-        </Button>
+        
       </div>
 
-      {showFilters && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-muted/30 rounded-lg animate-accordion-down">
+      {showFilters && <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-muted/30 rounded-lg animate-accordion-down">
           <Select>
             <SelectTrigger>
               <SelectValue placeholder={language === "en" ? "Size (m²)" : "Μέγεθος (m²)"} />
@@ -137,8 +121,6 @@ export const PropertyFilters = () => {
               <SelectItem value="pool">{language === "en" ? "Pool" : "Πισίνα"}</SelectItem>
             </SelectContent>
           </Select>
-        </div>
-      )}
-    </div>
-  );
+        </div>}
+    </div>;
 };
