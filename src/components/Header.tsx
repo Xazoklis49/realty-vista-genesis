@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, Moon, Sun } from "lucide-react";
+import { Menu, X, Home, Moon, Sun, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "next-themes";
 import { Separator } from "@/components/ui/separator";
 import { ServicesDropdown } from "@/components/ServicesDropdown";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,25 +49,29 @@ export const Header = () => {
               {t('browseProperties')}
             </Link>
             <ServicesDropdown />
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>{t('tools')}</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4">
-                      <li>
-                        <NavigationMenuLink asChild>
-                          <Link to="/tools" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                            <div className="text-sm font-medium leading-none">{t('buyVsRentCalculator')}</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{t('buyVsRentCalculatorDescription')}</p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors outline-none">
+                {t('tools')}
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                className="w-[400px] p-4 rounded-2xl border border-border/20 bg-background/95 backdrop-blur-lg shadow-lg"
+                align="start"
+                sideOffset={8}
+              >
+                <Link 
+                  to="/tools" 
+                  className="block rounded-xl border border-border/20 p-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 hover:bg-accent/50"
+                >
+                  <div className="text-sm font-medium leading-none mb-2 hover:text-primary transition-colors">
+                    {t('buyVsRentCalculator')}
+                  </div>
+                  <p className="text-xs text-muted-foreground line-clamp-2">
+                    {t('buyVsRentCalculatorDescription')}
+                  </p>
+                </Link>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <Link 
               to="/our-team"
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
