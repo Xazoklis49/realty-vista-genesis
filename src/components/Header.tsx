@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, Moon, Sun, Upload, ChevronDown } from "lucide-react";
+import { Menu, X, Home, Moon, Sun } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "next-themes";
 import { Separator } from "@/components/ui/separator";
@@ -8,30 +9,48 @@ import { ServicesDropdown } from "@/components/ServicesDropdown";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const { language, setLanguage, t } = useLanguage();
   const { theme, setTheme } = useTheme();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const handleSubmitProperty = () => {
+    navigate('/#contact');
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      contactSection?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <Home className="h-7 w-7 text-primary" />
-            <span className="text-xl font-bold text-foreground">EliteHomes</span>
-          </div>
+          <Link to="/" className="flex items-center space-x-2 group" aria-label={t('homeLink') || 'Home'}>
+            <Home className="h-7 w-7 text-primary transition-transform group-hover:scale-110" />
+            <span className="text-xl font-bold text-foreground">Proper Land</span>
+          </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <a href="/properties" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+          <nav className="hidden lg:flex items-center space-x-8" aria-label="Main navigation">
+            <Link 
+              to="/properties" 
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              aria-current={location.pathname === '/properties' ? 'page' : undefined}
+            >
               {t('browseProperties')}
-            </a>
+            </Link>
             <ServicesDropdown />
-            <a href="/our-team" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+            <Link 
+              to="/our-team" 
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              aria-current={location.pathname === '/our-team' ? 'page' : undefined}
+            >
               {t('ourTeamNav')}
-            </a>
+            </Link>
             
             <Separator orientation="vertical" className="h-6" />
           </nav>
@@ -41,6 +60,7 @@ export const Header = () => {
             <button
               onClick={() => setLanguage(language === 'en' ? 'gr' : 'en')}
               className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              aria-label={t('switchLanguage') || 'Switch language'}
             >
               <span className={language === 'gr' ? 'text-foreground font-semibold' : ''}>GR</span>
               <span className="text-muted-foreground">/</span>
@@ -52,11 +72,12 @@ export const Header = () => {
               size="icon"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="h-9 w-9"
+              aria-label={theme === 'dark' ? t('switchToLight') || 'Switch to light mode' : t('switchToDark') || 'Switch to dark mode'}
             >
-              <Moon className="h-4 w-4" />
+              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
 
-            <Button variant="default" size="sm" className="ml-2">
+            <Button variant="default" size="sm" className="ml-2" onClick={handleSubmitProperty}>
               {t('submitProperty')}
             </Button>
           </div>
@@ -65,6 +86,8 @@ export const Header = () => {
           <button
             onClick={toggleMenu}
             className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
+            aria-label={isMenuOpen ? t('closeMenu') || 'Close menu' : t('openMenu') || 'Open menu'}
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -73,16 +96,26 @@ export const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-border animate-fade-in">
-            <nav className="flex flex-col space-y-3">
-              <a href="/properties" className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
+            <nav className="flex flex-col space-y-3" aria-label="Mobile navigation">
+              <Link 
+                to="/properties" 
+                className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2"
+                onClick={toggleMenu}
+                aria-current={location.pathname === '/properties' ? 'page' : undefined}
+              >
                 {t('browseProperties')}
-              </a>
+              </Link>
               <div className="py-2">
                 <ServicesDropdown />
               </div>
-              <a href="/our-team" className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2">
+              <Link 
+                to="/our-team" 
+                className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2"
+                onClick={toggleMenu}
+                aria-current={location.pathname === '/our-team' ? 'page' : undefined}
+              >
                 {t('ourTeamNav')}
-              </a>
+              </Link>
 
               <Separator className="my-2" />
 
@@ -90,6 +123,7 @@ export const Header = () => {
                 <button
                   onClick={() => setLanguage(language === 'en' ? 'gr' : 'en')}
                   className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground"
+                  aria-label={t('switchLanguage') || 'Switch language'}
                 >
                   <span className={language === 'gr' ? 'text-foreground font-semibold' : ''}>GR</span>
                   <span>/</span>
@@ -100,12 +134,13 @@ export const Header = () => {
                   variant="ghost"
                   size="icon"
                   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  aria-label={theme === 'dark' ? t('switchToLight') || 'Switch to light mode' : t('switchToDark') || 'Switch to dark mode'}
                 >
-                  <Moon className="h-4 w-4" />
+                  {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
                 </Button>
               </div>
 
-              <Button variant="default" size="sm" className="w-full mt-2">
+              <Button variant="default" size="sm" className="w-full mt-2" onClick={() => { handleSubmitProperty(); toggleMenu(); }}>
                 {t('submitProperty')}
               </Button>
             </nav>

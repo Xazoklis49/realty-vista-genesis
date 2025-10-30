@@ -1,9 +1,11 @@
+import { useNavigate, useLocation } from "react-router-dom";
 import { ChevronDown, Scale, FileText, FolderOpen, Camera } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const services = [
   {
@@ -33,26 +35,31 @@ const services = [
 ];
 
 export const ServicesDropdown = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { t } = useLanguage();
+
   const handleServiceClick = (id: string) => {
-    const targetUrl = `/#${id}`;
-    
-    // If already on homepage, smooth scroll
-    if (window.location.pathname === "/") {
+    if (location.pathname === '/') {
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-        window.history.replaceState(null, "", targetUrl);
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     } else {
-      // Navigate to homepage with anchor
-      window.location.href = targetUrl;
+      navigate(`/#${id}`);
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     }
   };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors outline-none">
-        Όλες οι υπηρεσίες
+        {t('allServices')}
         <ChevronDown className="h-4 w-4" />
       </DropdownMenuTrigger>
       <DropdownMenuContent

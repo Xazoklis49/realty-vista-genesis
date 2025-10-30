@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PropertyFilters } from "@/components/properties/PropertyFilters";
@@ -114,13 +115,22 @@ const mockProperties: Property[] = [
 
 const Properties = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { language } = useLanguage();
+  const location = useLocation();
+  const { language, t } = useLanguage();
   const [listingType, setListingType] = useState<ListingType>(
     (searchParams.get("type") as ListingType) || "buy"
   );
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
   const [filteredProperties, setFilteredProperties] = useState<Property[]>(mockProperties);
   const [selectedProperty, setSelectedProperty] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('config', 'GA_MEASUREMENT_ID', {
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location]);
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
@@ -155,6 +165,12 @@ const Properties = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <html lang={language === 'gr' ? 'el' : 'en'} />
+        <title>{t('browseProperties')} | Proper Land</title>
+        <meta name="description" content={t('featuredSubtitle')} />
+        <link rel="canonical" href={`https://properland.gr/properties${location.search}`} />
+      </Helmet>
       <Header />
       <main className="pt-16">
         {/* Header Section */}
