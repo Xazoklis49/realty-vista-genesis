@@ -1,42 +1,77 @@
 import { Home, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
-
 const footerLinks = {
-  company: [
-    { label: "About Us", href: "#about" },
-    { label: "Our Team", href: "#team" },
-    { label: "Careers", href: "#careers" },
-    { label: "Press", href: "#press" }
-  ],
-  services: [
-    { label: "Buy Properties", href: "#buy" },
-    { label: "Sell Properties", href: "#sell" },
-    { label: "Rent Properties", href: "#rent" },
-    { label: "Investment Advisory", href: "#invest" }
-  ],
-  resources: [
-    { label: "Market Reports", href: "#reports" },
-    { label: "Property Valuation", href: "#valuation" },
-    { label: "Mortgage Calculator", href: "#calculator" },
-    { label: "Neighborhood Guide", href: "#guide" }
-  ],
-  legal: [
-    { label: "Privacy Policy", href: "#privacy" },
-    { label: "Terms of Service", href: "#terms" },
-    { label: "Cookie Policy", href: "#cookies" },
-    { label: "Disclaimer", href: "#disclaimer" }
-  ]
+  company: [{
+    label: "About Us",
+    href: "#about"
+  }, {
+    label: "Our Team",
+    href: "#team"
+  }, {
+    label: "Careers",
+    href: "#careers"
+  }, {
+    label: "Press",
+    href: "#press"
+  }],
+  services: [{
+    label: "Buy Properties",
+    href: "#buy"
+  }, {
+    label: "Sell Properties",
+    href: "#sell"
+  }, {
+    label: "Rent Properties",
+    href: "#rent"
+  }, {
+    label: "Investment Advisory",
+    href: "#invest"
+  }],
+  resources: [{
+    label: "Market Reports",
+    href: "#reports"
+  }, {
+    label: "Property Valuation",
+    href: "#valuation"
+  }, {
+    label: "Mortgage Calculator",
+    href: "#calculator"
+  }, {
+    label: "Neighborhood Guide",
+    href: "#guide"
+  }],
+  legal: [{
+    label: "Privacy Policy",
+    href: "#privacy"
+  }, {
+    label: "Terms of Service",
+    href: "#terms"
+  }, {
+    label: "Cookie Policy",
+    href: "#cookies"
+  }, {
+    label: "Disclaimer",
+    href: "#disclaimer"
+  }]
 };
-
-const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" }
-];
-
+const socialLinks = [{
+  icon: Facebook,
+  href: "#",
+  label: "Facebook"
+}, {
+  icon: Twitter,
+  href: "#",
+  label: "Twitter"
+}, {
+  icon: Instagram,
+  href: "#",
+  label: "Instagram"
+}, {
+  icon: Linkedin,
+  href: "#",
+  label: "LinkedIn"
+}];
 export const Footer = () => {
-  return (
-    <footer className="bg-primary text-primary-foreground">
+  return <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4">
         {/* Main Footer Content */}
         <div className="py-16">
@@ -71,53 +106,11 @@ export const Footer = () => {
             </div>
 
             {/* Links Sections */}
-            <div>
-              <h4 className="font-semibold text-lg mb-4">Company</h4>
-              <ul className="space-y-2">
-                {footerLinks.company.map((link, index) => (
-                  <li key={index}>
-                    <a 
-                      href={link.href}
-                      className="text-primary-foreground/80 hover:text-luxury transition-colors text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            
 
-            <div>
-              <h4 className="font-semibold text-lg mb-4">Services</h4>
-              <ul className="space-y-2">
-                {footerLinks.services.map((link, index) => (
-                  <li key={index}>
-                    <a 
-                      href={link.href}
-                      className="text-primary-foreground/80 hover:text-luxury transition-colors text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            
 
-            <div>
-              <h4 className="font-semibold text-lg mb-4">Resources</h4>
-              <ul className="space-y-2">
-                {footerLinks.resources.map((link, index) => (
-                  <li key={index}>
-                    <a 
-                      href={link.href}
-                      className="text-primary-foreground/80 hover:text-luxury transition-colors text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            
           </div>
         </div>
 
@@ -131,11 +124,7 @@ export const Footer = () => {
               </p>
             </div>
             <div className="flex gap-4">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 rounded-md bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-luxury"
-              />
+              <input type="email" placeholder="Enter your email" className="flex-1 px-4 py-2 rounded-md bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-luxury" />
               <button className="px-6 py-2 bg-luxury text-luxury-foreground rounded-md hover:bg-luxury/90 transition-colors text-sm font-medium">
                 Subscribe
               </button>
@@ -153,33 +142,19 @@ export const Footer = () => {
 
             {/* Social Links */}
             <div className="flex items-center space-x-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-luxury hover:scale-110 transition-all duration-300"
-                >
+              {socialLinks.map((social, index) => <a key={index} href={social.href} aria-label={social.label} className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-luxury hover:scale-110 transition-all duration-300">
                   <social.icon className="h-4 w-4" />
-                </a>
-              ))}
+                </a>)}
             </div>
 
             {/* Legal Links */}
             <div className="flex items-center space-x-6">
-              {footerLinks.legal.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="text-primary-foreground/80 hover:text-luxury transition-colors text-sm"
-                >
+              {footerLinks.legal.map((link, index) => <a key={index} href={link.href} className="text-primary-foreground/80 hover:text-luxury transition-colors text-sm">
                   {link.label}
-                </a>
-              ))}
+                </a>)}
             </div>
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
