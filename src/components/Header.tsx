@@ -45,7 +45,14 @@ export const Header = () => {
             </Link>
             <ServicesDropdown />
             <Link 
-              to="/our-team" 
+              to="/tools" 
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              aria-current={location.pathname === '/tools' ? 'page' : undefined}
+            >
+              {t('toolsNav')}
+            </Link>
+            <Link 
+              to="/our-team"
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
               aria-current={location.pathname === '/our-team' ? 'page' : undefined}
             >
@@ -109,7 +116,15 @@ export const Header = () => {
                 <ServicesDropdown />
               </div>
               <Link 
-                to="/our-team" 
+                to="/tools" 
+                className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2"
+                onClick={toggleMenu}
+                aria-current={location.pathname === '/tools' ? 'page' : undefined}
+              >
+                {t('toolsNav')}
+              </Link>
+              <Link 
+                to="/our-team"
                 className="text-left text-sm font-medium text-foreground hover:text-primary transition-colors py-2"
                 onClick={toggleMenu}
                 aria-current={location.pathname === '/our-team' ? 'page' : undefined}
