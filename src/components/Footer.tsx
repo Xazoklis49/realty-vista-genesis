@@ -74,22 +74,7 @@ export const Footer = () => {
   return <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4">
         {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            {/* Brand Section - Simplified */}
-            <div className="lg:col-span-5">
-              <div className="flex items-center space-x-2 mb-4">
-                <Home className="h-6 w-6 text-luxury" />
-                <span className="text-xl font-bold">Proper Land</span>
-              </div>
-              
-              <p className="text-primary-foreground/80 text-sm leading-relaxed">
-                Ολοκληρωμένες υπηρεσίες ακινήτων με ασφάλεια και εμπιστοσύνη.
-              </p>
-            </div>
-
-          </div>
-        </div>
+        
 
 
         {/* Bottom Footer */}
