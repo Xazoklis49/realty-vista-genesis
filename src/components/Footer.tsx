@@ -76,61 +76,21 @@ export const Footer = () => {
         {/* Main Footer Content */}
         <div className="py-16">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            {/* Brand Section */}
-            <div className="lg:col-span-2">
-              <div className="flex items-center space-x-2 mb-6">
-                <Home className="h-8 w-8 text-luxury" />
-                <span className="text-2xl font-bold">EliteHomes</span>
+            {/* Brand Section - Simplified */}
+            <div className="lg:col-span-5">
+              <div className="flex items-center space-x-2 mb-4">
+                <Home className="h-6 w-6 text-luxury" />
+                <span className="text-xl font-bold">Proper Land</span>
               </div>
               
-              <p className="text-primary-foreground/80 mb-6 leading-relaxed">
-                Your trusted partner in real estate excellence. We combine innovative 
-                technology with personalized service to deliver exceptional results 
-                for every client.
+              <p className="text-primary-foreground/80 text-sm leading-relaxed">
+                Ολοκληρωμένες υπηρεσίες ακινήτων με ασφάλεια και εμπιστοσύνη.
               </p>
-
-              <div className="space-y-3">
-                <div className="flex items-center text-primary-foreground/80">
-                  <MapPin className="h-4 w-4 mr-3 text-luxury" />
-                  <span className="text-sm">123 Elite Avenue, New York, NY 10001</span>
-                </div>
-                <div className="flex items-center text-primary-foreground/80">
-                  <Phone className="h-4 w-4 mr-3 text-luxury" />
-                  <span className="text-sm">+1 (555) 123-4567</span>
-                </div>
-                <div className="flex items-center text-primary-foreground/80">
-                  <Mail className="h-4 w-4 mr-3 text-luxury" />
-                  <span className="text-sm">info@elitehomes.com</span>
-                </div>
-              </div>
             </div>
 
-            {/* Links Sections */}
-            
-
-            
-
-            
           </div>
         </div>
 
-        {/* Newsletter Section */}
-        <div className="border-t border-primary-foreground/20 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h4 className="font-semibold text-lg mb-2">Stay Updated</h4>
-              <p className="text-primary-foreground/80 text-sm">
-                Get the latest market insights and property updates delivered to your inbox.
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <input type="email" placeholder="Enter your email" className="flex-1 px-4 py-2 rounded-md bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-luxury" />
-              <button className="px-6 py-2 bg-luxury text-luxury-foreground rounded-md hover:bg-luxury/90 transition-colors text-sm font-medium">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
 
         {/* Bottom Footer */}
         <div className="border-t border-primary-foreground/20 py-8">

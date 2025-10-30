@@ -74,9 +74,61 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Information */}
-          
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Contact Information & Newsletter */}
+          <div className="space-y-6 animate-fade-up">
+            {/* Brand & Contact Info */}
+            <Card className="bg-gradient-card border-0 shadow-elegant">
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <MapPin className="h-6 w-6 text-primary" />
+                    <span className="text-xl font-bold text-foreground">Proper Land</span>
+                  </div>
+                  
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Ο αξιόπιστος συνεργάτης σας στην αγορά ακινήτων με ολοκληρωμένες υπηρεσίες.
+                  </p>
+
+                  <div className="space-y-2 pt-2">
+                    <div className="flex items-start text-muted-foreground">
+                      <MapPin className="h-4 w-4 mr-2 mt-0.5 text-primary flex-shrink-0" />
+                      <span className="text-sm">123 Elite Avenue, Athens</span>
+                    </div>
+                    <div className="flex items-center text-muted-foreground">
+                      <Phone className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
+                      <span className="text-sm">+30 210 123 4567</span>
+                    </div>
+                    <div className="flex items-center text-muted-foreground">
+                      <Mail className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
+                      <span className="text-sm">info@properland.gr</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Newsletter */}
+            <Card className="bg-gradient-card border-0 shadow-elegant">
+              <CardContent className="p-6">
+                <h4 className="font-semibold text-foreground mb-2">Ενημερωθείτε</h4>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Λάβετε νέα ακινήτων και συμβουλές απευθείας στο email σας.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Input 
+                    type="email" 
+                    placeholder="Το email σας" 
+                    className="flex-1 text-sm"
+                  />
+                  <Button variant="default" size="sm" className="sm:w-auto">
+                    <Send className="h-4 w-4 mr-1" />
+                    Εγγραφή
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Contact Form */}
           <div className="animate-scale-in">
