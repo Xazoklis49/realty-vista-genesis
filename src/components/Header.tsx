@@ -44,13 +44,25 @@ export const Header = () => {
               {t('browseProperties')}
             </Link>
             <ServicesDropdown />
-            <Link 
-              to="/tools" 
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              aria-current={location.pathname === '/tools' ? 'page' : undefined}
-            >
-              {t('toolsNav')}
-            </Link>
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>{t('tools')}</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4">
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <Link to="/tools" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                            <div className="text-sm font-medium leading-none">{t('buyVsRentCalculator')}</div>
+                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{t('buyVsRentCalculatorDescription')}</p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
             <Link 
               to="/our-team"
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
