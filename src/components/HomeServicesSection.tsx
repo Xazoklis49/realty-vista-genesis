@@ -152,23 +152,25 @@ export const HomeServicesSection = () => {
               ))}
             </SliderContent>
 
-            <SliderBtnGroup className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <SliderBtnGroup className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
               {services.map((service) => {
                 const IconComponent = service.icon;
                 return (
                   <SliderBtn
                     key={service.id}
                     value={service.id}
-                    className="text-left cursor-pointer p-4 border border-border/20 rounded-xl bg-background hover:bg-accent/20 transition-all duration-300"
-                    progressBarClass="bg-primary/20 h-full"
+                    className="group text-left cursor-pointer p-5 rounded-2xl transition-all duration-500 ease-out bg-background/50 hover:bg-accent/30 hover:shadow-md hover:scale-[1.02] data-[active=true]:bg-primary/5 data-[active=true]:shadow-lg data-[active=true]:scale-[1.03] data-[active=true]:border-2 data-[active=true]:border-primary border border-border/30"
+                    progressBarClass="bg-gradient-to-r from-primary/30 to-primary/60 h-full rounded-2xl"
                   >
-                    <div className="flex items-center gap-2 mb-2">
-                      <IconComponent className="h-5 w-5 text-primary" />
-                      <h4 className="font-semibold text-sm text-foreground">
+                    <div className="flex items-center gap-2 mb-2 transition-transform duration-300 group-hover:translate-x-0.5">
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 group-data-[active=true]:bg-primary/20 flex items-center justify-center transition-all duration-300">
+                        <IconComponent className="h-4 w-4 text-primary group-data-[active=true]:scale-110 transition-transform duration-300" />
+                      </div>
+                      <h4 className="font-semibold text-sm text-foreground group-data-[active=true]:text-primary transition-colors duration-300">
                         {t(service.titleKey)}
                       </h4>
                     </div>
-                    <p className="text-xs text-muted-foreground line-clamp-2">
+                    <p className="text-xs text-muted-foreground group-data-[active=true]:text-foreground/80 line-clamp-2 transition-colors duration-300">
                       {t(service.reassuranceKey)}
                     </p>
                   </SliderBtn>
