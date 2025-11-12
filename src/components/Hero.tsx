@@ -103,7 +103,7 @@ export const Hero = () => {
               transition={{ delay: 0.8, duration: 0.5 }}
               className="flex flex-wrap gap-4 justify-center lg:justify-start text-sm text-muted-foreground"
             >
-              {['Εκτίμηση Ακινήτου', 'Νομικός Έλεγχος', 'Τεχνικός Έλεγχος', 'Χρηματοδότηση'].map((service, i) => (
+              {['Εκτίμηση Ακινήτου', 'Νομικός Έλεγχος', 'Τεχνικός Έλεγχος', 'Εικονικές Περιηγήσεις', 'Εσωτερικός Σχεδιασμός'].map((service, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-primary" />
                   <span>{service}</span>
