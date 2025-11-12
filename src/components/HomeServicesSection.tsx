@@ -120,14 +120,14 @@ export const HomeServicesSection = () => {
                         {service.bulletKeys.map((bulletKey, i) => (
                           <li key={i} className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
-                            <span className="text-sm text-foreground leading-relaxed">
+                            <span className="text-base text-foreground leading-relaxed font-medium">
                               {t(bulletKey)}
                             </span>
                           </li>
                         ))}
                       </ul>
                       
-                      <p className="text-sm text-muted-foreground italic mb-6 leading-relaxed">
+                      <p className="text-base text-muted-foreground italic mb-6 leading-relaxed font-medium">
                         {t(service.reassuranceKey)}
                       </p>
                       
@@ -135,6 +135,7 @@ export const HomeServicesSection = () => {
                         <Button 
                           onClick={() => handlePrimaryCTA(t(service.titleKey))} 
                           size="lg"
+                          className="font-bold"
                         >
                           {t(service.ctaKey)}
                         </Button>
@@ -142,6 +143,7 @@ export const HomeServicesSection = () => {
                           onClick={handleSecondaryCTA} 
                           variant="outline" 
                           size="lg"
+                          className="font-bold"
                         >
                           {t('talkToAdvisor')}
                         </Button>
@@ -159,18 +161,18 @@ export const HomeServicesSection = () => {
                   <SliderBtn
                     key={service.id}
                     value={service.id}
-                    className="group text-left cursor-pointer p-5 rounded-2xl transition-all duration-500 ease-out bg-background/50 hover:bg-accent/30 hover:shadow-md hover:scale-[1.02] data-[active=true]:bg-primary/5 data-[active=true]:shadow-lg data-[active=true]:scale-[1.03] data-[active=true]:border-2 data-[active=true]:border-primary border border-border/30"
-                    progressBarClass="bg-gradient-to-r from-primary/30 to-primary/60 h-full rounded-2xl"
+                    className="group text-left cursor-pointer p-6 rounded-2xl transition-all duration-500 ease-out bg-muted/30 hover:bg-muted/50 hover:shadow-lg hover:scale-[1.02] data-[active=true]:bg-foreground data-[active=true]:shadow-xl data-[active=true]:scale-[1.03] data-[active=true]:border-2 data-[active=true]:border-foreground border-2 border-border/40"
+                    progressBarClass="bg-gradient-to-r from-yellow-200/80 via-yellow-300/80 to-yellow-400/80 h-full rounded-2xl"
                   >
-                    <div className="flex items-center gap-2 mb-2 transition-transform duration-300 group-hover:translate-x-0.5">
-                      <div className="w-8 h-8 rounded-lg bg-primary/10 group-data-[active=true]:bg-primary/20 flex items-center justify-center transition-all duration-300">
-                        <IconComponent className="h-4 w-4 text-primary group-data-[active=true]:scale-110 transition-transform duration-300" />
+                    <div className="flex items-center gap-3 mb-3 transition-transform duration-300 group-hover:translate-x-0.5">
+                      <div className="w-9 h-9 rounded-lg bg-primary/10 group-data-[active=true]:bg-background/20 flex items-center justify-center transition-all duration-300">
+                        <IconComponent className="h-5 w-5 text-primary group-data-[active=true]:text-background group-data-[active=true]:scale-110 transition-all duration-300" />
                       </div>
-                      <h4 className="font-semibold text-sm text-foreground group-data-[active=true]:text-primary transition-colors duration-300">
+                      <h4 className="font-bold text-base text-foreground group-data-[active=true]:text-background transition-colors duration-300 leading-tight">
                         {t(service.titleKey)}
                       </h4>
                     </div>
-                    <p className="text-xs text-muted-foreground group-data-[active=true]:text-foreground/80 line-clamp-2 transition-colors duration-300">
+                    <p className="text-sm text-muted-foreground group-data-[active=true]:text-background/90 line-clamp-2 transition-colors duration-300 leading-relaxed">
                       {t(service.reassuranceKey)}
                     </p>
                   </SliderBtn>
