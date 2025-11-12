@@ -299,6 +299,11 @@ const translations = {
     bookAppointment: 'Book Appointment',
     readyToStart: 'Ready to get started? Request a customized quote today.',
     requestQuote: 'Request Quote',
+    
+    // Home Services Section
+    homeServicesTitle: 'By your side at every step',
+    homeServicesSubtitle: 'We ensure a smooth and transparent process, from inspection to transaction completion—stress-free.',
+    homeServicesTagline: 'Legal, technical, and commercial coordination from one point.',
   },
   gr: {
     browseProperties: 'Αναζήτηση Ακινήτων',
@@ -590,6 +595,11 @@ const translations = {
     bookAppointment: 'Κλείσε ραντεβού',
     readyToStart: 'Έτοιμος να ξεκινήσεις; Ζήτησε μια προσαρμοσμένη προσφορά σήμερα.',
     requestQuote: 'Ζήτησε προσφορά',
+    
+    // Home Services Section
+    homeServicesTitle: 'Δίπλα σου σε κάθε βήμα',
+    homeServicesSubtitle: 'Εξασφαλίζουμε ομαλή και διαφανή διαδικασία, από τον έλεγχο μέχρι την ολοκλήρωση της συναλλαγής—χωρίς άγχος.',
+    homeServicesTagline: 'Νομικός, τεχνικός και εμπορικός συντονισμός από ένα σημείο.',
   },
 };
 
