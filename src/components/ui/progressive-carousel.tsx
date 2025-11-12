@@ -206,7 +206,7 @@ export const SliderBtn: FC<SliderBtnProps> = ({
     <button
       className={cn(
         'relative overflow-hidden transition-all duration-500',
-        active === value ? 'opacity-100' : 'opacity-60 hover:opacity-80',
+        active === value ? 'opacity-100' : 'opacity-70 hover:opacity-85',
         className
       )}
       onClick={() => handleButtonClick(value)}
