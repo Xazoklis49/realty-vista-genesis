@@ -301,9 +301,40 @@ const translations = {
     requestQuote: 'Request Quote',
     
     // Home Services Section
-    homeServicesTitle: 'By your side at every step',
-    homeServicesSubtitle: 'We ensure a smooth and transparent process, from inspection to transaction completion—stress-free.',
-    homeServicesTagline: 'Legal, technical, and commercial coordination from one point.',
+    homeServicesTitle: 'From Inspection to Showcase — All in One Place',
+    homeServicesSubtitle: 'Our team handles legal and technical inspections so your property transaction is safe, complete, and free of surprises.',
+    
+    // Legal Services
+    legalServiceTitle: 'Legal Inspection',
+    legalServiceBullet1: 'Title verification & encumbrance check (Κτηματολόγιο/Υποθηκοφυλακείο)',
+    legalServiceBullet2: 'Verification of ownership history & potential claims',
+    legalServiceBullet3: 'Clear report on legal status & risk assessment',
+    legalServiceReassurance: 'Your purchase is backed by thorough legal due diligence — no hidden surprises.',
+    legalServiceCta: 'Request Legal Check',
+    
+    // Technical Services
+    technicalServiceTitle: 'Technical Inspection',
+    technicalServiceBullet1: 'Building permit verification & zoning compliance',
+    technicalServiceBullet2: 'Structural assessment & unauthorized construction identification',
+    technicalServiceBullet3: 'Detailed technical condition report',
+    technicalServiceReassurance: 'We identify any technical issues upfront so you can negotiate with confidence.',
+    technicalServiceCta: 'Request Technical Check',
+    
+    // Presentation Services
+    presentationServiceTitle: 'Professional Presentation',
+    presentationServiceBullet1: 'HDR photography & short video/REELS production',
+    presentationServiceBullet2: 'Floor plans & light virtual staging (optional)',
+    presentationServiceBullet3: 'Optimized media for portals & social networks',
+    presentationServiceReassurance: 'First impressions matter — showcase your property with stunning visuals.',
+    presentationServiceCta: 'Book Photography',
+    
+    // Interior Design Services
+    interiorDesignServiceTitle: 'Interior Design Consultation',
+    interiorDesignServiceBullet1: 'Space optimization & layout recommendations',
+    interiorDesignServiceBullet2: 'Color schemes & furniture placement advice',
+    interiorDesignServiceBullet3: 'Staging tips to maximize appeal & value',
+    interiorDesignServiceReassurance: 'Transform your property into a buyer\'s dream with expert design guidance.',
+    interiorDesignServiceCta: 'Schedule Consultation',
     
     // Hero Services List
     heroServiceValuation: 'Property Valuation',
@@ -604,9 +635,40 @@ const translations = {
     requestQuote: 'Ζήτησε προσφορά',
     
     // Home Services Section
-    homeServicesTitle: 'Δίπλα σου σε κάθε βήμα',
-    homeServicesSubtitle: 'Εξασφαλίζουμε ομαλή και διαφανή διαδικασία, από τον έλεγχο μέχρι την ολοκλήρωση της συναλλαγής—χωρίς άγχος.',
-    homeServicesTagline: 'Νομικός, τεχνικός και εμπορικός συντονισμός από ένα σημείο.',
+    homeServicesTitle: 'Από τον έλεγχο έως την παρουσίαση — όλα σε ένα σημείο',
+    homeServicesSubtitle: 'Η ομάδα μας αναλαμβάνει νομικό και τεχνικό έλεγχο ώστε η διαδικασία αγοράς ή πώλησης να είναι πλήρως ασφαλής και χωρίς εκπλήξεις.',
+    
+    // Legal Services
+    legalServiceTitle: 'Νομικός Έλεγχος',
+    legalServiceBullet1: 'Έλεγχος τίτλων & βαρών (Land Registry / Mortgage Registry)',
+    legalServiceBullet2: 'Επαλήθευση ιστορικού ιδιοκτησίας & τυχόν διεκδικήσεων',
+    legalServiceBullet3: 'Σαφής αναφορά νομικής κατάστασης & αξιολόγηση κινδύνου',
+    legalServiceReassurance: 'Η αγορά σου υποστηρίζεται από ενδελεχή νομική έρευνα — χωρίς κρυφές εκπλήξεις.',
+    legalServiceCta: 'Ζήτα Νομικό Έλεγχο',
+    
+    // Technical Services
+    technicalServiceTitle: 'Τεχνικός Έλεγχος',
+    technicalServiceBullet1: 'Επαλήθευση οικοδομικής άδειας & πολεοδομική συμμόρφωση',
+    technicalServiceBullet2: 'Στατική εκτίμηση & εντοπισμός αυθαιρέτων',
+    technicalServiceBullet3: 'Αναλυτική έκθεση τεχνικής κατάστασης',
+    technicalServiceReassurance: 'Εντοπίζουμε τυχόν τεχνικά ζητήματα εκ των προτέρων για να διαπραγματευτείς με αυτοπεποίθηση.',
+    technicalServiceCta: 'Ζήτα Τεχνικό Έλεγχο',
+    
+    // Presentation Services
+    presentationServiceTitle: 'Επαγγελματική Παρουσίαση',
+    presentationServiceBullet1: 'HDR φωτογράφιση & παραγωγή σύντομου βίντεο/REELS',
+    presentationServiceBullet2: 'Κάτοψη & light virtual staging (προαιρετικά)',
+    presentationServiceBullet3: 'Βελτιστοποιημένο υλικό για portals & social media',
+    presentationServiceReassurance: 'Οι πρώτες εντυπώσεις μετρούν — παρουσίασε το ακίνητό σου με εντυπωσιακά visuals.',
+    presentationServiceCta: 'Κλείσε Φωτογράφιση',
+    
+    // Interior Design Services
+    interiorDesignServiceTitle: 'Συμβουλευτική Εσωτερικού Σχεδιασμού',
+    interiorDesignServiceBullet1: 'Βελτιστοποίηση χώρου & προτάσεις διαρρύθμισης',
+    interiorDesignServiceBullet2: 'Χρωματικοί συνδυασμοί & συμβουλές τοποθέτησης επίπλων',
+    interiorDesignServiceBullet3: 'Τεχνικές staging για μεγιστοποίηση ελκυστικότητας & αξίας',
+    interiorDesignServiceReassurance: 'Μετέτρεψε το ακίνητό σου στο όνειρο του αγοραστή με εξειδικευμένες συμβουλές design.',
+    interiorDesignServiceCta: 'Προγραμμάτισε Συνάντηση',
     
     // Hero Services List
     heroServiceValuation: 'Εκτίμηση Ακινήτου',
