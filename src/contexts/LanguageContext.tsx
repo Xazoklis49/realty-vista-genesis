@@ -304,6 +304,13 @@ const translations = {
     homeServicesTitle: 'By your side at every step',
     homeServicesSubtitle: 'We ensure a smooth and transparent process, from inspection to transaction completion—stress-free.',
     homeServicesTagline: 'Legal, technical, and commercial coordination from one point.',
+    
+    // Hero Services List
+    heroServiceValuation: 'Property Valuation',
+    heroServiceLegalCheck: 'Legal Check',
+    heroServiceTechnicalCheck: 'Technical Check',
+    heroServiceVirtualTours: 'Virtual Tours',
+    heroServiceInteriorDesign: 'Interior Design',
   },
   gr: {
     browseProperties: 'Αναζήτηση Ακινήτων',
@@ -600,6 +607,13 @@ const translations = {
     homeServicesTitle: 'Δίπλα σου σε κάθε βήμα',
     homeServicesSubtitle: 'Εξασφαλίζουμε ομαλή και διαφανή διαδικασία, από τον έλεγχο μέχρι την ολοκλήρωση της συναλλαγής—χωρίς άγχος.',
     homeServicesTagline: 'Νομικός, τεχνικός και εμπορικός συντονισμός από ένα σημείο.',
+    
+    // Hero Services List
+    heroServiceValuation: 'Εκτίμηση Ακινήτου',
+    heroServiceLegalCheck: 'Νομικός Έλεγχος',
+    heroServiceTechnicalCheck: 'Τεχνικός Έλεγχος',
+    heroServiceVirtualTours: 'Εικονικές Περιηγήσεις',
+    heroServiceInteriorDesign: 'Εσωτερικός Σχεδιασμός',
   },
 };
 
