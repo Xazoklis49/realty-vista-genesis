@@ -205,19 +205,21 @@ export const SliderBtn: FC<SliderBtnProps> = ({
   return (
     <button
       className={cn(
-        `relative ${active === value ? 'opacity-100' : 'opacity-50'}`,
+        'relative overflow-hidden transition-all duration-500',
+        active === value ? 'opacity-100' : 'opacity-60 hover:opacity-80',
         className
       )}
       onClick={() => handleButtonClick(value)}
+      data-active={active === value}
     >
       {children}
       <div
-        className='absolute inset-0 overflow-hidden -z-10 max-h-full max-w-full '
+        className='absolute inset-0 overflow-hidden -z-10 max-h-full max-w-full rounded-2xl'
         role='progressbar'
         aria-valuenow={active === value ? progress : 0}
       >
         <span
-          className={cn('absolute left-0 ', progressBarClass)}
+          className={cn('absolute left-0 transition-all duration-300 ease-out', progressBarClass)}
           style={{
             [vertical ? 'height' : 'width']:
               active === value ? `${progress}%` : '0%',
